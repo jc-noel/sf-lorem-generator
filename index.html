@@ -24,6 +24,36 @@
         <input type="text" id="startSentence" placeholder="Amidst a supernova, ">
     </label>
     <br>
+    <label for="presetSelect">
+        genre/theme preset:
+        <select id="presetSelect">
+            <option value="">None</option>
+            <option value="spaceOpera">Space Opera</option>
+            <!-- Add more preset options (e.g., cyberpunk, time travel) here -->
+        </select>
+    </label>
+    <br>
+    <div>
+        Weights:
+        <div style="display: flex;">
+            <label for="weightTechnology">
+                tech:
+                <input type="number" id="weightTechnology" value="1" min="0" step="0.1">
+            </label>
+            <label for="weightSpecies">
+                species:
+                <input type="number" id="weightSpecies" value="1" min="0" step="0.1">
+            </label>
+            <label for="weightLocations">
+                locations:
+                <input type="number" id="weightLocations" value="1" min="0" step="0.1">
+            </label>
+            <label for="weightConcepts">
+                concepts:
+                <input type="number" id="weightConcepts" value="1" min="0" step="0.1">
+            </label>
+        </div>
+    </div>
     <button id="generate">generate</button>
     <p id="output"></p>
 

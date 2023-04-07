@@ -1,10 +1,24 @@
 import { data } from './data/categories.js';
+import { categoryWeights } from './data/categoryWeights.js';
+import { presets } from './data/presets.js';
 
 const getRandomInt = (max) => Math.floor(Math.random() * Math.floor(max));
 
 const capitalizeFirstLetter = (string) => string.charAt(0).toUpperCase() + string.slice(1);
 
-const getRandomCategory = () => data.categories[getRandomInt(data.categories.length)];
+const getRandomCategory = () => {
+    const totalWeight = Object.values(categoryWeights).reduce((a, b) => a + b, 0);
+    const randomWeight = Math.random() * totalWeight;
+
+    let currentWeight = 0;
+    for (const category of data.categories) {
+        currentWeight += categoryWeights[category.name];
+        if (randomWeight < currentWeight) {
+            return category;
+        }
+    }
+    return data.categories[data.categories.length - 1];
+}
 
 const getRandomValue = (category) => category.values[getRandomInt(category.values.length)];
 
@@ -55,6 +69,35 @@ const generate = document.getElementById('generate');
 const numParagraphsInput = document.getElementById('numParagraphs');
 const numSentencesInput = document.getElementById('numSentences');
 const startSentenceInput = document.getElementById('startSentence');
+
+const presetSelect = document.getElementById('presetSelect');
+const weightTechnology = document.getElementById('weightTechnology');
+const weightSpecies = document.getElementById('weightSpecies');
+const weightLocations = document.getElementById('weightLocations');
+const weightConcepts = document.getElementById('weightConcepts');
+
+presetSelect.addEventListener('change', () => {
+    const selectedPreset = presets[presetSelect.value];
+    if (selectedPreset) {
+        categoryWeights.technology = selectedPreset.categoryWeights.technology;
+        categoryWeights.species = selectedPreset.categoryWeights.species;
+        categoryWeights.locations = selectedPreset.categoryWeights.locations;
+        categoryWeights.concepts = selectedPreset.categoryWeights.concepts;
+
+        weightTechnology.value = categoryWeights.technology;
+        weightSpecies.value = categoryWeights.species;
+        weightLocations.value = categoryWeights.locations;
+        weightConcepts.value = categoryWeights.concepts;
+
+        // custom sentence templates here
+    }
+
+});
+
+weightTechnology.addEventListener('change', () => categoryWeights.technology = parseFloat(weightTechnology.value));
+weightSpecies.addEventListener('change', () => categoryWeights.species = parseFloat(weightSpecies.value));
+weightLocations.addEventListener('change', () => categoryWeights.locations = parseFloat(weightLocations.value));
+weightConcepts.addEventListener('change', () => categoryWeights.concepts = parseFloat(weightConcepts.value));
 
 generate.addEventListener('click', () => {
     const numberOfParagraphs = parseInt(numParagraphsInput.value, 10);
