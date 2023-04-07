@@ -8,9 +8,17 @@
 </head>
 <body>
     <h1 style="display: inline;margin-right: 2rem;">sci-fi lorem ipsum generator</h1>
+    <br>
+    <label for="numParagraphs">number of paragraphs:
+        <input type="number" id="numParagraphs" value="5" min="1">
+    </label>
+    <br>
+    <label for="numSentences">number of sentences per paragraph:
+        <input type="number" id="numSentences" value="4" min="1">
+    </label>
+    <br>
     <button id="generate">generate</button>
-    <hr>
-    <div id="output"></div>
+    <p id="output"></p>
 
     <script src="./index.js" type="module"></script>
 </body>

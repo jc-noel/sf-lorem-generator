@@ -13,10 +13,21 @@ const createSentence = () => {
 
     const sentenceTemplates = [
         `${word1} ${word2} ${word3} ${word4}.`,
-        `${word1} and ${word2} in ${word3} and ${word4}.`,
-        `The ${word1} ${word2} is ${word3} by ${word4}.`,
-        `A ${word1} ${word2}, ${word3} the ${word4}.`,
-        `${word3} ${word1} for ${word2} ${word4}.`,
+        `In ${word3}, ${word1} ${word4} with ${word2}.`,
+        `${word2} ${word1}, ${word4} ${word3}.`,
+        `The ${word3} ${word1} is ${word4} by ${word2}.`,
+        `${word4} or ${word1}, ${word2} is ${word3}.`,
+        `From ${word2} to ${word1}, ${word4} ${word3}.`,
+        `${word3} beyond ${word1}, ${word4} ${word2}.`,
+        `Throughout ${word4}, ${word2} ${word3} ${word1}.`,
+        `${word1}, ${word3} ${word2} through ${word4}.`,
+        `Between ${word3} and ${word1}, ${word4} ${word2}.`,
+        `In the ${word2}, ${word3} ${word1} ${word4}.`,
+        `${word4} ${word2}, yet ${word1} ${word3}.`,
+        `${word1}, ${word4} around ${word3} ${word2}.`,
+        `${word3} ${word2} ${word1}, except ${word4}.`,
+        `${word2} and ${word4} in ${word1} and ${word3}.`,
+        `A ${word4} ${word1}, ${word2} the ${word3}.`,
     ];
 
     return capitalizeFirstLetter(sentenceTemplates[getRandomInt(sentenceTemplates.length)]);
@@ -32,16 +43,19 @@ const generateSciFiLoremIpsum = (numberOfParagraphs, numberOfSentences, starting
     return paragraphs.join('\n\n');
 };
 
-const numberOfParagraphs = 5;
-const numberOfSentences = 4;
-const startingSentence = '';
-const sciFiLoremIpsum = generateSciFiLoremIpsum(numberOfParagraphs, numberOfSentences, startingSentence);
-
 const output = document.getElementById('output');
 const generate = document.getElementById('generate');
+const numParagraphsInput = document.getElementById('numParagraphs');
+const numSentencesInput = document.getElementById('numSentences');
+
+const startingSentence = '';
 
 generate.addEventListener('click', () => {
+    const numberOfParagraphs = parseInt(numParagraphsInput.value, 10);
+    const numberOfSentences = parseInt(numSentencesInput.value, 10);
     output.innerText = generateSciFiLoremIpsum(numberOfParagraphs, numberOfSentences, startingSentence);
 });
 
-output.innerText = sciFiLoremIpsum;
+const numberOfParagraphs = parseInt(numParagraphsInput.value, 10);
+const numberOfSentences = parseInt(numSentencesInput.value, 10);
+output.innerText = generateSciFiLoremIpsum(numberOfParagraphs, numberOfSentences, startingSentence);
