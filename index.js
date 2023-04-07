@@ -41,9 +41,11 @@ const createParagraph = (numberOfSentences, capitalizeFirstSentence = true) => {
 };
 
 const generateSciFiLoremIpsum = (numberOfParagraphs, numberOfSentences, startingSentence) => {
-    const paragraphs = Array(numberOfParagraphs).fill().map(() => createParagraph(numberOfSentences, startingSentence === ''));
+    const paragraphs = Array(numberOfParagraphs).fill().map(() => createParagraph(numberOfSentences));
     if (startingSentence) {
-        paragraphs[0] = startingSentence + ' ' + paragraphs[0];
+        const firstSentence = createSentence(false);
+        const remainingSentences = paragraphs[0].split('. ').slice(1).join('. ');
+        paragraphs[0] = startingSentence + ' ' + firstSentence + ' ' + remainingSentences;
     }
     return paragraphs.join('\n\n');
 };
