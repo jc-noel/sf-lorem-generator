@@ -22,10 +22,12 @@ const getRandomCategory = () => {
 
 const getRandomValue = (category) => category.values[getRandomInt(category.values.length)];
 
-const createSentence = (capitalize = true) => {
+const createSentence = (templates, capitalize = true) => {
     const [word1, word2, word3, word4] = Array(4).fill().map(() => getRandomValue(getRandomCategory()));
+    
+    templates = templates.map(template => template.replace(/{word1}/g, word1).replace(/{word2}/g, word2).replace(/{word3}/g, word3).replace(/{word4}/g, word4))
 
-    const sentenceTemplates = [
+    const sentenceTemplates = templates.length > 0 ? templates : [
         `${word1} ${word2} ${word3} ${word4}.`,
         `in ${word3}, ${word1} ${word4} with ${word2}.`,
         `${word2} ${word1}, ${word4} ${word3}.`,
@@ -49,13 +51,15 @@ const createSentence = (capitalize = true) => {
     return capitalize ? capitalizeFirstLetter(sentence) : sentence;
 };
 
-const createParagraph = (numberOfSentences, capitalizeFirstSentence = true) => {
-    const sentences = Array(numberOfSentences).fill().map((_, index) => createSentence(index === 0 ? capitalizeFirstSentence : true));
+const createParagraph = (numberOfSentences, templates, capitalizeFirstSentence = true) => {
+    const sentences = Array(numberOfSentences).fill().map((_, index) => createSentence(templates, index === 0 ? capitalizeFirstSentence : true));
     return sentences.join(' ');
 };
 
 const generateSciFiLoremIpsum = (numberOfParagraphs, numberOfSentences, startingSentence) => {
-    const paragraphs = Array(numberOfParagraphs).fill().map(() => createParagraph(numberOfSentences));
+    const selectedPreset = presets[presetSelect.value];
+    const templates = selectedPreset ? selectedPreset.sentenceTemplates : [];
+    const paragraphs = Array(numberOfParagraphs).fill().map(() => createParagraph(numberOfSentences, templates));
     if (startingSentence) {
         const firstSentence = createSentence(false);
         const remainingSentences = paragraphs[0].split('. ').slice(1).join('. ');
