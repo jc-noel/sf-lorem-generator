@@ -55,7 +55,10 @@ weightLocations.addEventListener('change', () => categoryWeights.locations = par
 weightConcepts.addEventListener('change', () => categoryWeights.concepts = parseFloat(weightConcepts.value));
 
 // add listener to the generate button
-generate.addEventListener('click', () => {
+generate.addEventListener('click', (event) => {
+    // prevent the default form submission
+    event.preventDefault();
+    // get the values from the UI
     const numberOfParagraphs = parseInt(numParagraphsInput.value, 10);
     const numberOfSentences = parseInt(numSentencesInput.value, 10);
     const startingSentence = startSentenceInput.value;
