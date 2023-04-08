@@ -10,6 +10,31 @@
  */
 
 export const presets = {
+    none: {
+        categoryWeights: {
+            technology: 1,
+            species: 1,
+            locations: 1,
+            concepts: 1,
+        },
+        sentenceTemplates: [
+            `{word1} {word2} {word3} {word4}.`,
+            `in {word3}, {word1} {word4} with {word2}.`,
+            `{word2} {word1}, {word4} {word3}.`,
+            `the {word3} {word1} is {word4} by {word2}.`,
+            `{word4} or {word1}, {word2} is {word3}.`,
+            `from {word2} to {word1}, {word4} {word3}.`,
+            `{word3} beyond {word1}, {word4} {word2}.`,
+            `throughout {word4}, {word2} {word3} {word1}.`,
+            `{word1}, {word3} {word2} through {word4}.`,
+            `between {word3} and {word1}, {word4} {word2}.`,
+            `in the {word2}, {word3} {word1} {word4}.`,
+            `{word4} {word2}, yet {word1} {word3}.`,
+            `{word1}, {word4} around {word3} {word2}.`,
+            `{word3} {word2} {word1}, except {word4}.`,
+            `{word2} and {word4} in {word1} and {word3}.`,
+        ]
+    },
     spaceOpera: {
         categoryWeights: {
             technology: 1,
