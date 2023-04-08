@@ -1,6 +1,6 @@
-import { categoryWeights } from './data/categoryWeights.js';
-import { presets } from './data/presets.js';
-import { generateSciFiLoremIpsum } from './generator.js';
+import { categoryWeights } from './generator/data/categoryWeights.js';
+import { presets } from './generator/data/presets.js';
+import { generateSciFiLoremIpsum } from './generator/generator.js';
 
 const output = document.getElementById('output');
 const generate = document.getElementById('generate');
