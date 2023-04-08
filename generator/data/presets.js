@@ -1,3 +1,14 @@
+/**
+ * @fileoverview Presets for the generator
+ * @author jcnoel
+ * @version 1.0.0
+ * 
+ * This file contains the presets for the generator.
+ * Presets are a set of category weights and sentence templates.
+ * The category weights are used to determine the weight of each category when selecting a random category.
+ * The sentence templates are used to generate the sentences.
+ */
+
 export const presets = {
     spaceOpera: {
         categoryWeights: {

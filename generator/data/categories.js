@@ -1,3 +1,20 @@
+/**
+ * @fileoverview Sci-Fi Lorem Ipsum Generator categories and weights
+ * @author jcnoel
+ * @version 1.0.0
+ * 
+ * This file contains the categories, category values, and category weights used by the generator.
+ * If you want to add more categories or values, add them here, also change default category weights.
+ */
+
+
+export const categoryWeights = {
+    technology: 1,
+    species: 1,
+    locations: 1,
+    concepts: 1,
+}
+
 export const data = {
     "categories": [
         {
