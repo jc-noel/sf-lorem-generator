@@ -9,10 +9,10 @@
 
 
 export const categoryWeights = {
-    technology: 1,
-    species: 1,
-    locations: 1,
-    concepts: 1,
+    technology: 0,
+    species: 0,
+    locations: 0,
+    concepts: 0,
 }
 
 export const data = {
