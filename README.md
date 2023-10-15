@@ -11,3 +11,6 @@ should be fun.
 * Custom starting sentence
 * Genre/Theme presets
 * Weights for categories
+
+## Live Demo
+https://jc-noel.github.io/sf-lorem-generator/
