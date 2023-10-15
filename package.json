@@ -1,0 +1,16 @@
+{
+  "name": "sf-lorem-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tw:build": "npx tailwindcss -i ./assets/input.css -o ./assets/output.css --minify",
+    "tw:watch": "npx tailwindcss -i ./assets/input.css -o ./assets/output.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.3.3"
+  }
+}

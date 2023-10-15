@@ -4,62 +4,74 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/output.css">
     <title>sci-fi ipsum</title>
 </head>
-<body>
-    <h1 style="display: inline;margin-right: 2rem;">sci-fi lorem ipsum generator</h1>
-    <br>
-    <label for="numParagraphs">
-        number of paragraphs:
-        <input type="number" id="numParagraphs" value="5" min="1">
-    </label>
-    <br>
-    <label for="numSentences">
-        number of sentences per paragraph:
-        <input type="number" id="numSentences" value="4" min="1">
-    </label>
-    <br>
-    <label for="startSentence">
-        start sentence:
-        <input type="text" id="startSentence" placeholder="Amidst a supernova, ">
-    </label>
-    <br>
-    <label for="presetSelect">
-        genre/theme preset:
-        <select id="presetSelect">
-            <option value="none">None</option>
-            <option value="spaceOpera">Space Opera</option>
-            <option value="cyberpunk">Cyberpunk</option>
-            <option value="timeTravel">Time Travel</option>
-            <option value="postApocalyptic">Post Apocalyptic</option>
-            <option value="steampunk">Steampunk</option>
-            <option value="dystopia">Dystopia</option>
-        </select>
-    </label>
-    <br>
-    <div>
-        weights:
-        <div style="display: flex;">
-            <label for="weightTechnology">
-                tech:
-                <input type="number" id="weightTechnology" value="0" min="0" max="5" step="0.1">
-            </label>
-            <label for="weightSpecies">
-                species:
-                <input type="number" id="weightSpecies" value="0" min="0" max="5" step="0.1">
-            </label>
-            <label for="weightLocations">
-                locations:
-                <input type="number" id="weightLocations" value="0" min="0" max="5" step="0.1">
-            </label>
-            <label for="weightConcepts">
-                concepts:
-                <input type="number" id="weightConcepts" value="0" min="0" max="5" step="0.1">
-            </label>
+<body class="bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white p-10">
+
+    <h1 class="text-4xl font-bold mb-8">sci-fi lorem ipsum generator</h1>
+
+    <div class="md:flex md:space-x-8">
+        <!-- Controls Column -->
+        <div class="md:w-1/2">
+            <div class="mb-4">
+                <label for="numParagraphs" class="block mb-2">number of paragraphs:</label>
+                <input type="number" id="numParagraphs" value="5" min="1" class="p-2 border rounded bg-gray-100 dark:bg-gray-700">
+            </div>
+
+            <div class="mb-4">
+                <label for="numSentences" class="block mb-2">number of sentences per paragraph:</label>
+                <input type="number" id="numSentences" value="4" min="1" class="p-2 border rounded bg-gray-100 dark:bg-gray-700">
+            </div>
+
+            <div class="mb-4">
+                <label for="startSentence" class="block mb-2">start sentence:</label>
+                <input type="text" id="startSentence" placeholder="Amidst a supernova, " class="p-2 border rounded w-full bg-gray-100 dark:bg-gray-700">
+            </div>
+
+            <div class="mb-4">
+                <label for="presetSelect" class="block mb-2">genre/theme preset:</label>
+                <select id="presetSelect" class="p-2 border rounded w-full bg-gray-100 dark:bg-gray-700">
+                    <option value="none">None</option>
+                    <option value="spaceOpera">Space Opera</option>
+                    <option value="cyberpunk">Cyberpunk</option>
+                    <option value="timeTravel">Time Travel</option>
+                    <option value="postApocalyptic">Post Apocalyptic</option>
+                    <option value="steampunk">Steampunk</option>
+                    <option value="dystopia">Dystopia</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <span class="block mb-2">weights:</span>
+                <div class="flex space-x-4">
+                    <div>
+                        <label for="weightTechnology" class="block mb-2">tech:</label>
+                        <input type="number" id="weightTechnology" value="0" min="0" max="5" step="0.1" class="p-2 border rounded bg-gray-100 dark:bg-gray-700">
+                    </div>
+                    <div>
+                        <label for="weightSpecies" class="block mb-2">species:</label>
+                        <input type="number" id="weightSpecies" value="0" min="0" max="5" step="0.1" class="p-2 border rounded bg-gray-100 dark:bg-gray-700">
+                    </div>
+                    <div>
+                        <label for="weightLocations" class="block mb-2">locations:</label>
+                        <input type="number" id="weightLocations" value="0" min="0" max="5" step="0.1" class="p-2 border rounded bg-gray-100 dark:bg-gray-700">
+                    </div>
+                    <div>
+                        <label for="weightConcepts" class="block mb-2">concepts:</label>
+                        <input type="number" id="weightConcepts" value="0" min="0" max="5" step="0.1" class="p-2 border rounded bg-gray-100 dark:bg-gray-700">
+                    </div>
+                </div>
+            </div>
+
+            <button id="generate" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">generate</button>
+        </div>
+
+        <!-- Output Column -->
+        <div class="md:w-1/2 mt-8 md:mt-0">
+            <p id="output"></p>
         </div>
     </div>
-    <button id="generate">generate</button>
-    <p id="output"></p>
 
     <script src="./main.js" type="module"></script>
 </body>
