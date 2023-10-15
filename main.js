@@ -11,9 +11,9 @@
  */
 
 // bring in weights, presets, and generator
-import categoryWeights from './generator/data/categories.js';
-import presets from './generator/data/presets.js';
-import generateSciFiLoremIpsum from './generator/generator.js';
+import { categoryWeights } from './generator/data/categories.js';
+import { presets } from './generator/data/presets.js';
+import { generateSciFiLoremIpsum } from './generator/generator.js';
 
 // get the DOM elements for the UI
 const output = document.getElementById('output');
